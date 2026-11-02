@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syntha AI — Intelligent Solutions for the Enterprise</title>
+  <meta name="description" content="Syntha AI builds production-grade AI solutions that help businesses automate workflows, unlock insights from data, and ship smarter products.">
+  <style>
+    :root {
+      --bg: #070b16;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.09);
+      --text: #e8ecf7;
+      --muted: #8f9bb8;
+      --accent: #6d7cff;
+      --accent-2: #22d3ee;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .glow {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(600px 400px at 15% 10%, rgba(109,124,255,0.22), transparent 70%),
+        radial-gradient(500px 400px at 85% 25%, rgba(34,211,238,0.14), transparent 70%);
+    }
+    .grid-bg {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse at 50% 20%, #000 20%, transparent 75%);
+      mask-image: radial-gradient(ellipse at 50% 20%, #000 20%, transparent 75%);
+    }
+    .wrap { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 28px 0; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.15rem; }
+    .logo-mark {
+      width: 30px; height: 30px; border-radius: 9px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center; font-size: 0.95rem; color: #fff; font-weight: 800;
+    }
+    nav a.link { color: var(--muted); text-decoration: none; font-size: 0.92rem; margin-left: 28px; transition: color .2s; }
+    nav a.link:hover { color: var(--text); }
+    .hero { padding: 90px 0 70px; text-align: center; }
+    .badge {
+      display: inline-block; padding: 6px 14px; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--card);
+      color: var(--accent-2); font-size: 0.8rem; letter-spacing: 0.6px; text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+    h1 { font-size: clamp(2.3rem, 6vw, 4rem); line-height: 1.1; font-weight: 800; letter-spacing: -1.2px; margin-bottom: 22px; }
+    h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p { max-width: 640px; margin: 0 auto 36px; color: var(--muted); font-size: 1.12rem; }
+    .btn { display: inline-block; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 0.97rem; transition: transform .2s, box-shadow .2s; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), #8a63ff); color: #fff; box-shadow: 0 10px 30px rgba(109,124,255,0.35); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(109,124,255,0.5); }
+    .btn-ghost { border: 1px solid var(--border); color: var(--text); margin-left: 12px; background: var(--card); }
+    .btn-ghost:hover { transform: translateY(-2px); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 20px 0 90px; }
+    .stat { padding: 24px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); text-align: center; }
+    .stat b { display: block; font-size: 1.9rem; font-weight: 800; background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .stat small { color: var(--muted); font-size: 0.85rem; }
+    section { padding: 20px 0 80px; }
+    .eyebrow { color: var(--accent-2); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+    h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; }
+    .lead { color: var(--muted); max-width: 620px; margin-bottom: 40px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+    .card { padding: 30px; border-radius: 18px; background: var(--card); border: 1px solid var(--border); transition: transform .25s, border-color .25s, background .25s; }
+    .card:hover { transform: translateY(-4px); border-color: rgba(109,124,255,0.5); background: rgba(255,255,255,0.06); }
+    .icon { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 1.3rem; margin-bottom: 18px; background: linear-gradient(135deg, rgba(109,124,255,0.25), rgba(34,211,238,0.18)); border: 1px solid var(--border); }
+    .card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+    .contact-box { text-align: center; padding: 60px 30px; border-radius: 24px; border: 1px solid var(--border); background: linear-gradient(135deg, rgba(109,124,255,0.14), rgba(34,211,238,0.08)); }
+    .contact-box p { color: var(--muted); margin: 0 auto 28px; max-width: 520px; }
+    .mail { font-size: 1.2rem; color: var(--text); font-weight: 600; text-decoration: none; border-bottom: 1px dashed var(--accent-2); padding-bottom: 2px; }
+    footer { padding: 40px 0 50px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+    @media (max-width: 600px) {
+      nav a.link { display: none; }
+      .btn-ghost { margin: 12px 0 0 0; }
+      .hero { padding-top: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><div class="logo-mark">S</div> Syntha AI</div>
+      <div>
+        <a class="link" href="#about">About</a>
+        <a class="link" href="#solutions">Solutions</a>
+        <a class="link" href="#contact">Contact</a>
+      </div>
+    </nav>
+    <header class="hero">
+      <div class="badge">AI Solutions Company</div>
+      <h1>Intelligent AI solutions for <span>modern business</span></h1>
+      <p>Syntha AI designs and deploys production-grade artificial intelligence that automates workflows, uncovers insight from data, and turns ideas into scalable products.</p>
+      <a class="btn btn-primary" href="#contact">Get in Touch</a>
+      <a class="btn btn-ghost" href="#solutions">Explore Solutions</a>
+    </header>
+    <div class="stats">
+      <div class="stat"><b>LLM</b><small>Custom language-model apps</small></div>
+      <div class="stat"><b>24/7</b><small>Automated intelligent workflows</small></div>
+      <div class="stat"><b>API-first</b><small>Easy integration with your stack</small></div>
+      <div class="stat"><b>Secure</b><small>Privacy-minded by design</small></div>
+    </div>
+    <section id="about">
+      <div class="eyebrow">About Us</div>
+      <h2>Building AI that actually ships</h2>
+      <p class="lead">Syntha AI is a technology company focused on practical, reliable AI. We partner with teams to move from prototype to production — combining modern machine learning, thoughtful engineering, and a clear focus on measurable business outcomes.</p>
+    </section>
+    <section id="solutions">
+      <div class="eyebrow">Solutions</div>
+      <h2>What we build</h2>
+      <p class="lead">A focused set of AI capabilities that integrate cleanly into the tools your team already uses.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="icon">🤖</div>
+          <h3>AI Assistants &amp; Agents</h3>
+          <p>Conversational and task-oriented agents for customer support, internal knowledge, and operations.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📊</div>
+          <h3>Data Intelligence</h3>
+          <p>Turn raw, scattered data into dashboards, forecasts, and decisions with applied machine learning.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚙️</div>
+          <h3>Workflow Automation</h3>
+          <p>Automate repetitive document, email, and process work end-to-end with reliable AI pipelines.</p>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="contact-box">
+        <div class="eyebrow">Contact</div>
+        <h2>Let's build something together</h2>
+        <p>Interested in partnering with Syntha AI or exploring a project? Reach out and our team will get back to you promptly.</p>
+        <a class="mail" href="mailto:contact@syntha-ai.tech">contact@syntha-ai.tech</a>
+      </div>
+    </section>
+    <footer>
+      © 2026 Syntha AI. All rights reserved. · syntha-ai.tech
+    </footer>
+  </div>
+</body>
+</html>
